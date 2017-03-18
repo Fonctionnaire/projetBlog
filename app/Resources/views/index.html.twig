@@ -1,0 +1,57 @@
+{% extends "::layout.html.twig" %}
+
+{%  block body %}
+    {{ parent() }}
+    <div class="corp">
+    <div class="corpSection1">
+        <section id="sectionDescription" class="col-md-12">
+            <article>
+                <h1>BILLET SIMPLE POUR L'ALASKA - LIVRE EPISODIQUE</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas accumsan sapien suscipit, vestibulum nunc eu, euismod est. Sed luctus ipsum mauris, eget sodales sem porta nec. Phasellus id augue pharetra, elementum dolor eget, vulputate leo. Aenean pretium pulvinar augue, vel feugiat diam mattis sit amet. Praesent dignissim non erat id iaculis. Nam viverra vehicula tempus. Proin felis lorem, lobortis ac mauris quis, sagittis iaculis tellus. Morbi vel nunc commodo magna mattis ullamcorper vitae vel justo. Nulla facilisi. Praesent pellentesque turpis pellentesque augue rutrum tincidunt. Donec in venenatis quam. Duis ultrices egestas eros, ac faucibus nulla posuere non. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In at nibh gravida, sollicitudin nunc et, mollis velit.
+                </p>
+            </article>
+            <hr>
+            <h2 id="titreDernierEpisode">Le dernier épisode</h2>
+            <article id="dernierEpisode">
+                <h2>Titre de l'épisode</h2>
+                <p class="publie">Publié le : </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam aliquet tellus dolor, vel gravida justo fringilla at. Integer quam turpis, molestie sit amet sapien a, scelerisque lacinia arcu. Nam nunc augue, faucibus eget nisl eget, ultricies aliquet ante. Integer leo augue, rutrum vitae sagittis ut, sodales porta magna. Vestibulum quis diam finibus, laoreet leo quis, faucibus est. Nullam magna nibh, iaculis euismod hendrerit at, tincidunt sed metus. Nam ac pretium eros. Aliquam erat volutpat. Praesent odio elit, commodo eu eleifend et, dapibus at erat. Curabitur viverra erat urna, nec luctus neque tincidunt sed.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam aliquet tellus dolor, vel gravida justo fringilla at. Integer quam turpis, molestie sit amet sapien a, scelerisque lacinia arcu. Nam nunc augue, faucibus eget nisl eget, ultricies aliquet ante. Integer leo augue, rutrum vitae sagittis ut, sodales porta magna. Vestibulum quis diam finibus, laoreet leo quis, faucibus est. Nullam magna nibh, iaculis euismod hendrerit at, tincidunt sed metus. Nam ac pretium eros. Aliquam erat volutpat. Praesent odio elit, commodo eu eleifend et, dapibus at erat. Curabitur viverra erat urna, nec luctus neque tincidunt sed.
+
+                    Nunc vulputate mi ut elit pretium, nec bibendum tellus congue. Vestibulum consequat malesuada ex, at auctor erat fringilla ut. Integer hendrerit vel est eget feugiat. Cras bibendum magna vitae arcu ullamcorper, lobortis tempor mi lacinia. Maecenas nec odio vitae odio rhoncus congue sit amet eget leo. Sed semper mollis tempus. Aliquam erat volutpat. Maecenas eget sollicitudin leo, quis malesuada massa. Vivamus non libero et felis porttitor sodales eget id neque. Aenean fringilla sed mauris quis venenatis. Suspendisse ut augue porttitor, lacinia mauris vel, molestie leo. Aenean consectetur ligula sit amet velit varius, quis eleifend mi pellentesque. Maecenas ullamcorper in ex nec sagittis. In sed vehicula lorem, id sagittis urna. Proin dictum venenatis diam, eu faucibus turpis.
+
+                    Morbi molestie diam id facilisis ullamcorper. Quisque ultricies, nisi quis rhoncus molestie, quam tellus aliquam risus, at sodales tellus tortor tincidunt augue. Vestibulum tempus nisi et odio posuere, sit amet molestie lectus ullamcorper. Nunc nulla purus, blandit eu ultrices at, commodo sit amet erat. Sed a porttitor felis, in vestibulum orci. Donec lorem sem, hendrerit sed scelerisque at, tempus sed libero. Morbi non ex eu erat fermentum semper cursus sed metus. Praesent eu dolor nulla. Maecenas pharetra tincidunt turpis, in sollicitudin ipsum dignissim eu. Phasellus vulputate placerat luctus. Aliquam a feugiat justo, vitae elementum quam. Ut porta fringilla lorem, sed feugiat lorem fringilla nec.
+
+                </p>
+            </article>
+        </section>
+
+        <section class="col-md-3">
+            <div class="rectangle-right">
+                <img src="{{ asset('images/businessman-310819_1280.png') }}" name="auteur" alt="auteur" id="photoAuteur">
+                <hr>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas accumsan sapien suscipit, vestibulum nunc eu, euismod est. Sed luctus ipsum mauris, eget sodales sem porta nec...
+                </p>
+                <a href="{{ path('apropos') }}"><p>En savoir plus</p></a>
+            </div>
+            <div class="rectangle-right">
+                <h3>Les 3 derniers épisodes</h3>
+                <ul>
+
+                </ul>
+            </div>
+            <div class="rectangle-right">
+                <h3>Le dernier commentaire</h3>
+                <p>
+
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    </div>
+{% endblock %}

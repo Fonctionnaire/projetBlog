@@ -1,0 +1,163 @@
+/* ===== LAYOUT ===== */
+
+body
+{
+    background-image: url(../images/sunrise-2062953_1920.jpg);
+    background-color: white;
+}
+
+.container
+{
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7),
+    -1px 2px 20px rgba(255, 255, 255, 0.6) inset;
+    border-radius: 5px;
+    padding-bottom: 15px;
+}
+
+#titreSite
+{
+    font-size: 1.4em;
+    font-weight: bold;
+    color: black;
+    font-family: 'Pacifico', cursive, Arial;
+}
+
+#headerNavigation
+{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+footer
+{
+
+    background: black;
+    height: 50px;
+    color: white;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 5px 5px 5px 5px;
+}
+
+footer p
+{
+    margin-top: 15px;
+    padding-top: 15px;
+}
+
+/* ========================== */
+
+/* ==== INDEX ==== */
+
+.corp
+{
+    background: #F0E8E6;
+    border-radius: 5px 5px 5px 5px;
+    padding-bottom: 25px;
+}
+
+.corpSection1
+{
+    display: flex;
+    width: 100%;
+}
+
+#sectionDescription
+{
+    margin-top: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#sectionDescription hr
+{
+    width: 70%;
+    border-color: black;
+}
+
+#sectionDescription h1
+{
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+
+}
+
+#sectionDescription p
+{
+    text-align: justify;
+}
+
+.rectangle-right
+{
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #DFE8F2;
+    margin-top: 25px;
+    margin-right: 15px;
+}
+.rectangle-right hr
+{
+    width: 70%;
+    border-color: black;
+}
+
+.rectangle-right p
+{
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#photoAuteur
+{
+    width: 100px;
+    height: 100px;
+    margin-left: 30%;
+    margin-top: 5px;
+}
+
+#titreDernierEpisode
+{
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    font-family: 'Pacifico', cursive, Arial;
+    margin-top: 15px;
+    margin-bottom: 25px;
+
+}
+
+#dernierEpisode
+{
+    border: 1px solid black;
+    border-radius: 5px;
+    max-width: 70%;
+    align-items: center;
+    padding: 15px;
+    background-color: #FCF0E8;
+    margin: auto;
+}
+
+#dernierEpisode h2
+{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.publie
+{
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-style: italic;
+    font-size: 0.7em;
+}
+
+#dernierEpisode p
+{
+    text-align: justify;
+}
+
+/* =========================== */

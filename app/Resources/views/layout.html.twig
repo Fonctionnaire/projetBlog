@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Billet simple pour l'Alaska{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+        <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+        <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    {% endblock %}
+</head>
+<body>
+    <div class="container col-md-10 col-md-offset-1">
+        <header>
+            <div>
+                <nav class="navbar navbar-default" id="headerNavigation">
+                    <div class="navbar-header">
+                        <p class="navbar-brand" id="titreSite">Billet simple pour l'Alaska</p>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ path('homepage') }}">Accueil</a></li>
+                        <li><a  href="{{ path('episodes') }}">Liste des épisodes</a></li>
+                        <li><a href="{{ path('apropos') }}">A propos de l'auteur</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        {% block body %}
+        {% endblock %}
+
+        <footer>
+
+            <p class="text-center" id="copyright">© Jean Forteroche - {{ 'now'|date('Y') }}. Tous droits réservés</p>
+        </footer>
+    </div>
+
+    {% block javascripts %}
+
+        <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <script src="{{ asset('js/navActive.js') }}"></script>
+    {% endblock %}
+</body>
+</html>
