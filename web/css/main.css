@@ -33,11 +33,12 @@ footer
 {
 
     background: black;
-    height: 50px;
+    height: 80px;
     color: white;
     margin-left: 10%;
     margin-right: 10%;
     border-radius: 5px 5px 5px 5px;
+    padding-bottom: 5px;
 }
 
 footer p
@@ -46,13 +47,18 @@ footer p
     padding-top: 15px;
 }
 
+#lienAdmin
+{
+    color: white;
+}
+
 /* ========================== */
 
 /* ==== INDEX ==== */
 
 .corp
 {
-    background: #F0E8E6;
+    background: white;
     border-radius: 5px 5px 5px 5px;
     padding-bottom: 25px;
 }
@@ -130,7 +136,7 @@ footer p
 
 }
 
-#dernierEpisode
+.dernierEpisode
 {
     border: 1px solid black;
     border-radius: 5px;
@@ -141,7 +147,7 @@ footer p
     margin: auto;
 }
 
-#dernierEpisode h2
+.dernierEpisode h2
 {
     font-size: 1.2em;
     font-weight: bold;
@@ -155,9 +161,18 @@ footer p
     font-size: 0.7em;
 }
 
-#dernierEpisode p
+.dernierEpisode p
 {
     text-align: justify;
 }
 
 /* =========================== */
+
+/* ===== PAGE EPISODE UNIQUE === */
+
+#episodeUnique
+{
+    padding-top: 25px;
+}
+
+/* ============================ */

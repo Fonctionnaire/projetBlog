@@ -13,18 +13,14 @@
             </article>
             <hr>
             <h2 id="titreDernierEpisode">Le dernier épisode</h2>
-            <article id="dernierEpisode">
-                <h2>Titre de l'épisode</h2>
-                <p class="publie">Publié le : </p>
+            <article class="dernierEpisode">
+                <h2>{{ episode.titre }}</h2>
+                <p class="publie">Publié le : {{ episode.date|date('d-m-Y') }} </p>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam aliquet tellus dolor, vel gravida justo fringilla at. Integer quam turpis, molestie sit amet sapien a, scelerisque lacinia arcu. Nam nunc augue, faucibus eget nisl eget, ultricies aliquet ante. Integer leo augue, rutrum vitae sagittis ut, sodales porta magna. Vestibulum quis diam finibus, laoreet leo quis, faucibus est. Nullam magna nibh, iaculis euismod hendrerit at, tincidunt sed metus. Nam ac pretium eros. Aliquam erat volutpat. Praesent odio elit, commodo eu eleifend et, dapibus at erat. Curabitur viverra erat urna, nec luctus neque tincidunt sed.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam aliquet tellus dolor, vel gravida justo fringilla at. Integer quam turpis, molestie sit amet sapien a, scelerisque lacinia arcu. Nam nunc augue, faucibus eget nisl eget, ultricies aliquet ante. Integer leo augue, rutrum vitae sagittis ut, sodales porta magna. Vestibulum quis diam finibus, laoreet leo quis, faucibus est. Nullam magna nibh, iaculis euismod hendrerit at, tincidunt sed metus. Nam ac pretium eros. Aliquam erat volutpat. Praesent odio elit, commodo eu eleifend et, dapibus at erat. Curabitur viverra erat urna, nec luctus neque tincidunt sed.
-
-                    Nunc vulputate mi ut elit pretium, nec bibendum tellus congue. Vestibulum consequat malesuada ex, at auctor erat fringilla ut. Integer hendrerit vel est eget feugiat. Cras bibendum magna vitae arcu ullamcorper, lobortis tempor mi lacinia. Maecenas nec odio vitae odio rhoncus congue sit amet eget leo. Sed semper mollis tempus. Aliquam erat volutpat. Maecenas eget sollicitudin leo, quis malesuada massa. Vivamus non libero et felis porttitor sodales eget id neque. Aenean fringilla sed mauris quis venenatis. Suspendisse ut augue porttitor, lacinia mauris vel, molestie leo. Aenean consectetur ligula sit amet velit varius, quis eleifend mi pellentesque. Maecenas ullamcorper in ex nec sagittis. In sed vehicula lorem, id sagittis urna. Proin dictum venenatis diam, eu faucibus turpis.
-
-                    Morbi molestie diam id facilisis ullamcorper. Quisque ultricies, nisi quis rhoncus molestie, quam tellus aliquam risus, at sodales tellus tortor tincidunt augue. Vestibulum tempus nisi et odio posuere, sit amet molestie lectus ullamcorper. Nunc nulla purus, blandit eu ultrices at, commodo sit amet erat. Sed a porttitor felis, in vestibulum orci. Donec lorem sem, hendrerit sed scelerisque at, tempus sed libero. Morbi non ex eu erat fermentum semper cursus sed metus. Praesent eu dolor nulla. Maecenas pharetra tincidunt turpis, in sollicitudin ipsum dignissim eu. Phasellus vulputate placerat luctus. Aliquam a feugiat justo, vitae elementum quam. Ut porta fringilla lorem, sed feugiat lorem fringilla nec.
-
+                    {{ episode.texte }}
                 </p>
+                <hr>
+                <a href="{{ path('episode', {'id': episode.id}) }}"><p>Commenter</p></a>
             </article>
         </section>
 

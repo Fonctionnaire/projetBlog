@@ -24,7 +24,7 @@
                     </div>
                     <ul class="nav navbar-nav">
                         <li><a href="{{ path('homepage') }}">Accueil</a></li>
-                        <li><a  href="{{ path('episodes') }}">Liste des épisodes</a></li>
+                        <li><a href="{{ path('episodes') }}">Liste des épisodes</a></li>
                         <li><a href="{{ path('apropos') }}">A propos de l'auteur</a></li>
                     </ul>
                 </nav>
@@ -37,6 +37,7 @@
         <footer>
 
             <p class="text-center" id="copyright">© Jean Forteroche - {{ 'now'|date('Y') }}. Tous droits réservés</p>
+            <a href="{{ path('admin') }}" class="text-center" id="lienAdmin"><p>Administration</p></a>
         </footer>
     </div>
 

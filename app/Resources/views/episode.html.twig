@@ -1,0 +1,19 @@
+{% extends "::layout.html.twig" %}
+
+{%  block body %}
+    {{ parent() }}
+
+    <div class="corp">
+        <div  id="episodeUnique">
+            <div class="dernierEpisode">
+                <h2>{{ episode.titre }}</h2>
+                <p class="publie">{{ episode.date|date('d-m-Y') }}</p>
+                <p>{{ episode.texte }}</p>
+            </div>
+        </div>
+
+        <div class="commentaires">
+
+        </div>
+    </div>
+{% endblock %}
