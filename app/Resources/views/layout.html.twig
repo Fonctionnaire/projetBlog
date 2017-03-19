@@ -12,6 +12,15 @@
         <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
         <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+        <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+        <script>
+            tinymce.init({
+                selector: '.tiny',
+                resize: false,
+                height: '600px',
+                theme: 'modern'
+            });
+        </script>
     {% endblock %}
 </head>
 <body>
@@ -37,7 +46,7 @@
         <footer>
 
             <p class="text-center" id="copyright">© Jean Forteroche - {{ 'now'|date('Y') }}. Tous droits réservés</p>
-            <a href="{{ path('admin') }}" class="text-center" id="lienAdmin"><p>Administration</p></a>
+            <a href="{{ path('connexion') }}" class="text-center" id="lienAdmin"><p>Administration</p></a>
         </footer>
     </div>
 

@@ -74,6 +74,7 @@ footer p
     margin-top: 25px;
     margin-left: 15px;
     margin-right: 15px;
+    border-right: 4px solid grey;
 }
 
 #sectionDescription hr
@@ -173,6 +174,70 @@ footer p
 #episodeUnique
 {
     padding-top: 25px;
+}
+
+/* ============================ */
+
+/* ==== PAGE DE CONNEXION ==== */
+
+#formulaire
+{
+    text-align: center;
+}
+
+#formulaire h2
+{
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-top: 25px;
+    margin-bottom: 15px;
+}
+
+#formulaire input
+{
+    margin-bottom: 25px;
+}
+
+.flashMsg
+{
+    color: red;
+    margin-bottom: 25px;
+    margin-top: 15px;
+}
+
+/* ============================ */
+
+/* ==== PAGE PRINCIPALE ADMIN ==== */
+
+/* ============================ */
+
+/* ==== PAGE ADMIN AJOUT D'UN EPISODE ==== */
+#tinyTitre
+{
+    padding-top: 35px;
+    text-align: center;
+}
+
+#tinyTitre input
+{
+    width: 45%;
+}
+
+
+#zoneTiny
+{
+    padding-top: 25px;
+    padding-bottom: 35px;
+    width: 80%;
+    min-height: 700px;
+    margin: auto;
+
+}
+
+.tinyValider
+{
+    width: 10%;
+    margin-left: 45%;
 }
 
 /* ============================ */
