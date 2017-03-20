@@ -23,9 +23,38 @@ class BlogController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $episode = $em->getRepository('AppBundle:Episode')->find(1);
+        $episode = $em->getRepository('AppBundle:Episode')->findBy(array(), array('id' => 'desc'),1,0);
 
         return $this->render('index.html.twig', array('episode' => $episode));
+    }
+
+    /**
+     * @Route("/episodes", name="episodes")
+     * @Method({"GET"})
+     */
+    public function listeEpisodesAction()
+    {
+        return $this->render('listeEpisode.html.twig');
+    }
+
+    /**
+     * @Route("/episode/{id}", name="episode")
+     * @Method({"GET", "POST"})
+     */
+    public function episodeAction(Episode $episode, Commentaire $commentaire)
+    {
+
+
+        return $this->render('episode.html.twig', array('episode' => $episode, 'commentaire' => $commentaire));
+    }
+
+    /**
+     * @Route("/a-propos", name="apropos")
+     * @Method({"GET"})
+     */
+    public function proposAction()
+    {
+        return $this->render('apropos.html.twig');
     }
 
     /**
@@ -34,7 +63,11 @@ class BlogController extends Controller
      */
     public function adminAction()
     {
-        return $this->render('admin.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $episodes = $em->getRepository('AppBundle:Episode')->findAll();
+
+
+        return $this->render('admin.html.twig', array('episodes' => $episodes));
     }
 
     /**
@@ -94,47 +127,42 @@ class BlogController extends Controller
      * @Route("/admin/update/{id}", name="updateBillet")
      * @Method({"GET", "POST"})
      */
-    public function adminUpdateDeleteBilletAction()
+    public function adminUpdateBilletAction(Request $request, Episode $episode)
     {
 
-        return $this->render('adminUpdateDelete.html.twig');
+        $newEpisode = $episode;
+        $form = $this->get('form.factory')->create(EpisodeType::class, $newEpisode);
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            return $this->redirectToRoute('admin');
+        }
+
+        return $this->render('adminUpdate.html.twig', array('form' => $form->createView(),'id' => $episode->getId(), 'episode' => $newEpisode));
+    }
+
+    /**
+     * @Route("/admin/delete/{id}", name="deleteBillet")
+     * @Method({"GET", "POST"})
+     */
+    public function adminDeleteBilletAction(Episode $episode)
+    {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($episode);
+            $em->flush();
+            $this->addFlash('notice', "L'épisode a bien été supprimé.");
+            return $this->redirectToRoute('admin');
     }
 
     /**
      * @Route("/admin/commentaire/{id}", name="moderationComment")
      * @Method({"GET", "POST"})
      */
-    public function moderationCommentsAction()
+    public function moderationCommentsAction(Commentaire $commentaire)
     {
         return $this->render('adminComments.html.twig');
     }
 
-    /**
-     * @Route("/episodes", name="episodes")
-     * @Method({"GET"})
-     */
-    public function listeEpisodesAction()
-    {
-        return $this->render('listeEpisode.html.twig');
-    }
-
-    /**
-     * @Route("/episode/{id}", name="episode")
-     * @Method({"GET", "POST"})
-     */
-    public function episodeAction(Episode $episode, Commentaire $commentaire)
-    {
-
-
-        return $this->render('episode.html.twig', array('episode' => $episode, 'commentaire' => $commentaire));
-    }
-
-    /**
-     * @Route("/a-propos", name="apropos")
-     * @Method({"GET"})
-     */
-    public function proposAction()
-    {
-        return $this->render('apropos.html.twig');
-    }
 }

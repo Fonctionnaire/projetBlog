@@ -4,7 +4,27 @@
     {{ parent() }}
 
     <div class="corp">
-        <a href="{{ path('nouveauBillet') }}"><p>Ajouter un épisode</p></a>
+
+        <div id="nouveauBillet">
+            <a href="{{ path('nouveauBillet') }}">Ajouter un épisode</a>
+        </div>
+        <hr>
+            <div id="corpAdmin">
+                <div id="admin-updateDelete">
+                    <h4>Choix d'un épisode pour le modifier ou le supprimer</h4>
+                    <ol>
+                    {% for episode in episodes %}
+                        <a href="{{ path('updateBillet', {'id': episode.id}) }}">
+                            <li>{{ episode.titre }}</li>
+                        </a>
+                    {% endfor %}
+                    </ol>
+                </div>
+
+                <div id="admin-moderation">
+                    <h4>Liste des commentaires signalés</h4>
+                </div>
+            </div>
     </div>
 
 {% endblock %}

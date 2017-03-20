@@ -14,6 +14,8 @@
             <hr>
             <h2 id="titreDernierEpisode">Le dernier épisode</h2>
             <article class="dernierEpisode">
+                {% autoescape false %}
+                {% for episode in episode %}
                 <h2>{{ episode.titre }}</h2>
                 <p class="publie">Publié le : {{ episode.date|date('d-m-Y') }} </p>
                 <p>
@@ -21,6 +23,8 @@
                 </p>
                 <hr>
                 <a href="{{ path('episode', {'id': episode.id}) }}"><p>Commenter</p></a>
+                {% endfor %}
+                {% endautoescape %}
             </article>
         </section>
 

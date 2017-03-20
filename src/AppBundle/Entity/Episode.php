@@ -44,7 +44,7 @@ class Episode
 
     /**
      * @var Commentaire[]
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commentaire", mappedBy="episode", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commentaire", mappedBy="episode", cascade={"persist", "remove"})
      */
     private $commentaires;
 

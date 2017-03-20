@@ -1,0 +1,39 @@
+{% extends "::layout.html.twig" %}
+
+{%  block body %}
+    {{ parent() }}
+
+    <div class="corp">
+
+        <div class="corp">
+            {{ form_start(form) }}
+            <div id="tinyTitre">
+                {{ form_row(form.titre) }}
+                {{ form_errors(form.titre) }}
+
+            </div>
+            <div id="zoneTiny">
+                {{ form_row(form.texte, {'attr': {'class': 'tiny'}}) }}
+                {{ form_errors(form.texte) }}
+            </div>
+            <div id="tinyBoutonValider">
+                {{ form_row(form.valider, {'attr': {'class': 'tinyValider'}}) }}
+            </div>
+            {{ form_end(form) }}
+            <div id="boutonDelete">
+                <form action="{{ path('deleteBillet', {'id': episode.id}) }}" method="post">
+
+                    {# Ici j'ai écrit le bouton de soumission à la main #}
+                    <input type="submit" value="Supprimer" class="btn btn-danger" />
+                    {# Ceci va générer le champ CSRF #}
+                    {{ form_rest(form) }}
+                </form>
+            </div>
+        </div>
+        {% for flash_message in app.session.flashBag.get('notice') %}
+            <div class="flashMsg">
+                {{ flash_message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
