@@ -4,10 +4,10 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Commentaire;
-use AppBundle\Entity\Connexion;
 use AppBundle\Entity\Episode;
-use AppBundle\Form\Type\ConnexionType;
+use AppBundle\Form\Type\CommentaireType;
 use AppBundle\Form\Type\EpisodeType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -24,8 +24,10 @@ class BlogController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $episode = $em->getRepository('AppBundle:Episode')->findBy(array(), array('id' => 'desc'),1,0);
-
-        return $this->render('index.html.twig', array('episode' => $episode));
+        $troisEpisodes = $em->getRepository('AppBundle:Episode')->findBy(array(), array('id' => 'desc'),3,0);
+        $lastComment = $em->getRepository('AppBundle:Commentaire')->findBy(array(), array('id' => 'desc'), 1,0);
+dump($lastComment);
+        return $this->render('index.html.twig', array('episode' => $episode, 'troisEpisodes' => $troisEpisodes, 'lasComment' => $lastComment));
     }
 
     /**
@@ -34,18 +36,64 @@ class BlogController extends Controller
      */
     public function listeEpisodesAction()
     {
-        return $this->render('listeEpisode.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $episodes = $em->getRepository('AppBundle:Episode')->findAll();
+
+        return $this->render('listeEpisode.html.twig', array('episodes' => $episodes));
     }
 
     /**
      * @Route("/episode/{id}", name="episode")
      * @Method({"GET", "POST"})
      */
-    public function episodeAction(Episode $episode, Commentaire $commentaire)
+    public function episodeAction(Request $request, Episode $episode)
+    {
+        $listComments = $episode->getCommentaires();
+
+        $newCommentaire = new Commentaire();
+        $form = $this->get('form.factory')->create(CommentaireType::class, $newCommentaire);
+
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+
+            $newCommentaire->setDate(new \DateTime());
+            $newCommentaire->setEpisode($episode);
+            $em->persist($newCommentaire);
+            $em->flush();
+            return $this->redirectToRoute('episode', array('id' => $episode->getId()));
+        }
+
+        return $this->render('episode.html.twig', array('form' => $form->createView(),'episode' => $episode, 'listComments' => $listComments));
+    }
+
+    /**
+     * @Route("/commentaire/{id}", name="reponseComment")
+     * @Method({"GET", "POST"})
+     */
+    public function reponseCommentAction(Request $request,Commentaire $commentaire)
     {
 
+        $newCommentaire = new Commentaire();
+        $form = $this->get('form.factory')->create(CommentaireType::class, $newCommentaire);
 
-        return $this->render('episode.html.twig', array('episode' => $episode, 'commentaire' => $commentaire));
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+
+            $newCommentaire->setDate(new \DateTime());
+
+            $idEpisode = $commentaire->getEpisode();
+            $newCommentaire->setEpisode($idEpisode);
+            $newCommentaire->setParent($commentaire);
+
+            $em->persist($newCommentaire);
+            $em->flush();
+            return $this->redirectToRoute('homepage');
+        }
+
+        return $this->render('reponseComment.html.twig', array('form' => $form->createView(),'commentaire' => $commentaire));
     }
 
     /**
@@ -60,45 +108,14 @@ class BlogController extends Controller
     /**
      * @Route("/admin", name="admin")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function adminAction()
     {
         $em = $this->getDoctrine()->getManager();
         $episodes = $em->getRepository('AppBundle:Episode')->findAll();
 
-
         return $this->render('admin.html.twig', array('episodes' => $episodes));
-    }
-
-    /**
-     * @Route("/connexion", name="connexion")
-     * @Method({"GET","POST"})
-     */
-    public function connexionAction(Request $request)
-    {
-        $connexion = new Connexion();
-        $form = $this->get('form.factory')->create(ConnexionType::class, $connexion);
-
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
-        {
-            $em = $this->getDoctrine()->getManager();
-
-            $identifiants = $em->getRepository('AppBundle:Connexion')->find(1);
-
-            $log = $identifiants->getLogin();
-            $mdp = $identifiants->getMdp();
-
-            $logSubmit = $form->get('login')->getData();
-            $mdpSubmit = $form->get('mdp')->getData();
-            if($log != $logSubmit || $mdp != $mdpSubmit)
-            {
-                $this->addFlash('error', 'Mauvais login ou mot de passe');
-            }else{
-                return $this->redirectToRoute('admin');
-            }
-        }
-
-        return $this->render('connexion.html.twig', array('form' => $form->createView()));
     }
 
     /**
@@ -118,7 +135,6 @@ class BlogController extends Controller
 
             return $this->redirectToRoute('admin');
         }
-
 
         return $this->render('adminAddBillet.html.twig', array('form' => $form->createView()));
     }

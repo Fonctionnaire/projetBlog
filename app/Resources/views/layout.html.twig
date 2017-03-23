@@ -36,17 +36,39 @@
                         <li><a href="{{ path('episodes') }}">Liste des épisodes</a></li>
                         <li><a href="{{ path('apropos') }}">A propos de l'auteur</a></li>
                     </ul>
+                    <div>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <div class="connexHeader">
+                                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                                <a href="{{ path('fos_user_security_logout') }}">
+                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                            </div>
+                        {% else %}
+                        <div class="connexHeader">
+                            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                        </div>
+                        {% endif %}
+                    </div>
                 </nav>
             </div>
+
         </header>
 
         {% block body %}
+            {% block fos_user_content %}
+            {% endblock %}
         {% endblock %}
+
 
         <footer>
 
             <p class="text-center" id="copyright">© Jean Forteroche - {{ 'now'|date('Y') }}. Tous droits réservés</p>
-            <a href="{{ path('connexion') }}" class="text-center" id="lienAdmin"><p>Administration</p></a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('admin') }}" class="text-center" id="lienAdmin"><p>Administration</p></a>
+            {% else %}
+            <a href="{{ path('fos_user_security_login') }}" class="text-center" id="lienAdmin"><p>Administration</p></a>
+            {% endif %}
         </footer>
     </div>
 

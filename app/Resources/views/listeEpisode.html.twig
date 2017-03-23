@@ -3,4 +3,20 @@
 {%  block body %}
     {{ parent() }}
 
+    <div class="corp">
+        <div id="corpListEpisode">
+            {% for episode in episodes %}
+                {% autoescape false %}
+                    <a href="{{ path('episode', {'id': episode.id}) }}" id="lienEpisodes">
+                        <div class="listEpisode">
+                            <h3>{{ episode.titre }}</h3>
+                            <p class="publie">Publié le : {{ episode.date|date('d-m-Y') }}
+                                à {{ episode.date|date('H:m') }} </p>
+                            <p>{{ episode.texte }}</p>
+                        </div>
+                    </a>
+                {% endautoescape %}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

@@ -17,7 +17,7 @@
                 {% autoescape false %}
                 {% for episode in episode %}
                 <h2>{{ episode.titre }}</h2>
-                <p class="publie">Publié le : {{ episode.date|date('d-m-Y') }} </p>
+                <p class="publie">Publié le : {{ episode.date|date('d-m-Y') }} à {{ episode.date|date('H:m') }} </p>
                 <p>
                     {{ episode.texte }}
                 </p>
@@ -40,24 +40,31 @@
             <div class="rectangle-right">
                 <h3>Les 3 derniers épisodes</h3>
                 <ul>
+                    {% autoescape false %}
+                    {% for troisEpisodes in troisEpisodes %}
+                        <a href="{{ path('episode', {'id': troisEpisodes.id}) }}">
+                            <li>{{ troisEpisodes.titre }}</li>
+                        </a>
+                    {% endfor %}
+                    {% endautoescape %}
 
                 </ul>
             </div>
-            <div class="rectangle-right">
-                <h3>Le dernier commentaire</h3>
-                <p>
 
-                </p>
-            </div>
             <div class="rectangle-right">
+
                 <h3>Suivez moi sur le réseaux sociaux :</h3>
-                <p>
-
-                </p>
+                <div id="logoSociaux">
+                    <a href="https://fr-fr.facebook.com/" target="_blank">
+                        <img src="{{ asset('images/logo_fb.png') }}" alt="logoFb">
+                    </a>
+                    <a href="https://twitter.com/" target="_blank">
+                        <img src="{{ asset('images/logo_twitter.png') }}" alt="lgoTwitter">
+                    </a>
+                </div>
             </div>
         </section>
 
     </div>
-
     </div>
 {% endblock %}

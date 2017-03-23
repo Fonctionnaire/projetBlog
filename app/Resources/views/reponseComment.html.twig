@@ -1,0 +1,23 @@
+{% extends "::layout.html.twig" %}
+
+{%  block body %}
+    {{ parent() }}
+
+    <div class="corp">
+        <div>
+            <h3>{{ commentaire.auteur }}</h3>
+            <p class="publie">Envoyé le :{{ commentaire.date|date('d-m-Y') }} à {{ commentaire.date|date('H:m') }}</p>
+            <p>{{ commentaire.texte }}</p>
+        </div>
+        <div id="addComment">
+            {{ form_start(form) }}
+            {{ form_row(form.auteur) }}
+            {{ form_errors(form.auteur) }}
+            {{ form_row(form.texte) }}
+            {{ form_errors(form.texte) }}
+            {{ form_row(form.envoyer) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

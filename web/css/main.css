@@ -34,6 +34,11 @@ body
     background-color: #058DFC;
 }
 
+.connexHeader
+{
+    padding-top: 17px;
+}
+
 footer
 {
 
@@ -122,6 +127,34 @@ footer p
     margin-right: 10px;
 }
 
+.rectangle-right h3
+{
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.rectangle-right li
+{
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.rectangle-right a
+{
+    text-decoration: none;
+}
+
+.rectangle-right li:hover
+{
+    background-color: #28E307;
+}
+
+#logoSociaux
+{
+    text-align: center;
+}
+
 #photoAuteur
 {
     width: 100px;
@@ -181,33 +214,144 @@ footer p
     padding-top: 25px;
 }
 
-/* ============================ */
+.commentaires
+{
+    margin-top: 25px;
+}
 
-/* ==== PAGE DE CONNEXION ==== */
+.commentaires div
+{
+    margin: auto;
+}
 
-#formulaire
+.commentaires h2
+{
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    font-family: 'Pacifico', cursive, Arial;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.commentaires div
+{
+    margin-bottom: 25px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    width: 30%;
+}
+
+.commentaires h3
+{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#textCommentaire
+{
+
+}
+
+#addComment
 {
     text-align: center;
 }
 
-#formulaire h2
+#addComment textarea
 {
-    font-size: 1.2em;
-    font-weight: bold;
-    padding-top: 25px;
+    width: 40%;
+    height: 270px;
+    resize: none;
+    margin-top: 25px;
     margin-bottom: 15px;
 }
 
-#formulaire input
+.reponseCommentaire
 {
-    margin-bottom: 25px;
+    margin-left: 35px;
+    margin-top: 15px;
+    background-color: grey;
 }
 
-.flashMsg
+.mustBeConnect
 {
-    color: red;
-    margin-bottom: 25px;
-    margin-top: 15px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+/* ============================ */
+
+/* ==== PAGE LISTE EPISODES ==== */
+
+.listEpisode
+{
+    border: 1px solid black;
+    border-radius: 10px;
+    max-width: 300px;
+    max-height: 300px;
+    overflow: hidden;
+    padding: 10px;
+    margin-top: 25px;
+}
+
+.listEpisode h3
+{
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#lienEpisodes
+{
+    text-decoration: none;
+}
+
+.listEpisode
+{
+    color: black;
+    background-color: #FCF0E8;
+}
+
+.listEpisode:hover
+{
+    background-color: #058DFC;
+}
+
+#corpListEpisode
+{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+/* ============================ */
+
+/* ==== PAGE A PROPOS ==== */
+
+.photoApropos
+{
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-right: 25px;
+}
+
+.corpApropos
+{
+    padding: 35px;
+    text-align: justify;
+}
+
+/* ============================= */
+
+/* ==== PAGE DE CONNEXION ==== */
+
+.formLog
+{
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    margin: auto;
 }
 
 /* ============================ */

@@ -54,6 +54,11 @@ class Commentaire
     private $parent;
 
     /**
+     * @ORM\Column(name="report", type="boolean")
+     */
+    private $report;
+
+    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Episode", inversedBy="commentaires", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
@@ -150,11 +155,11 @@ class Commentaire
     /**
      * Add child
      *
-     * @param \AppBundle\Entity\Category $child
+     * @param \AppBundle\Entity\Commentaire $child
      *
      * @return Commentaire
      */
-    public function addChild(\AppBundle\Entity\Category $child)
+    public function addChild(\AppBundle\Entity\Commentaire$child)
     {
         $this->children[] = $child;
 
@@ -164,9 +169,9 @@ class Commentaire
     /**
      * Remove child
      *
-     * @param \AppBundle\Entity\Category $child
+     * @param \AppBundle\Entity\Commentaire $child
      */
-    public function removeChild(\AppBundle\Entity\Category $child)
+    public function removeChild(\AppBundle\Entity\Commentaire $child)
     {
         $this->children->removeElement($child);
     }
@@ -184,11 +189,11 @@ class Commentaire
     /**
      * Set parent
      *
-     * @param \AppBundle\Entity\Category $parent
+     * @param \AppBundle\Entity\Commentaire $parent
      *
      * @return Commentaire
      */
-    public function setParent(\AppBundle\Entity\Category $parent = null)
+    public function setParent(\AppBundle\Entity\Commentaire $parent = null)
     {
         $this->parent = $parent;
 
@@ -198,7 +203,7 @@ class Commentaire
     /**
      * Get parent
      *
-     * @return \AppBundle\Entity\Category
+     * @return \AppBundle\Entity\Commentaire
      */
     public function getParent()
     {
@@ -227,5 +232,29 @@ class Commentaire
     public function getEpisode()
     {
         return $this->episode;
+    }
+
+    /**
+     * Set report
+     *
+     * @param boolean $report
+     *
+     * @return Commentaire
+     */
+    public function setReport($report)
+    {
+        $this->report = $report;
+
+        return $this;
+    }
+
+    /**
+     * Get report
+     *
+     * @return boolean
+     */
+    public function getReport()
+    {
+        return $this->report;
     }
 }
