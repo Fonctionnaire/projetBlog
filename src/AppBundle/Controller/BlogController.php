@@ -135,20 +135,7 @@ class BlogController extends Controller
             $em->persist($newEpisode);
             $em->flush();
 
-            $users = $em->getRepository('AppBundle:User')->findAll();
-
-            foreach ($users as $user)
-            {
-                $message = \Swift_Message::newInstance()->setSubject('Nouvel épisode')
-                    ->setFrom('jean@gmail.com')
-                    ->setTo($user->getEmail())
-                    ->setBody($this->renderView(
-                        'Emails/newEpisodeMail.html.twig'
-                    ),
-                        'text/html'
-                    );
-                $this->get('mailer')->send($message);
-            }
+            $this->get("app.send_email_for_new_episode")->sendEmailForNewEpisode();
 
             return $this->redirectToRoute('admin');
         }

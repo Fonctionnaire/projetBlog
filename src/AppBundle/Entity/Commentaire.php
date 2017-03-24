@@ -56,7 +56,7 @@ class Commentaire
     /**
      * @ORM\Column(name="report", type="boolean")
      */
-    private $report;
+    private $report = false;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Episode", inversedBy="commentaires", cascade={"persist"})
