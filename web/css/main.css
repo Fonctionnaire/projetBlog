@@ -57,9 +57,22 @@ footer p
     padding-top: 15px;
 }
 
+#divLienAdmin
+{
+    width: 100px;
+    margin: auto;
+}
+
 #lienAdmin
 {
     color: white;
+    width: 100px;
+    text-align: center;
+}
+
+#lienAdmin p
+{
+    max-width: 100px;
 }
 
 /* ========================== */
@@ -375,7 +388,7 @@ footer p
     padding: 15px;
 }
 
-#nouveauBillet
+.nouveauBillet
 {
     padding-top: 35px;
     padding-bottom: 15px;
@@ -383,7 +396,7 @@ footer p
 
 }
 
-#nouveauBillet a
+.nouveauBillet a
 {
     border-radius: 20px;
     height: 60px;
@@ -396,7 +409,7 @@ footer p
     color: black;
 }
 
-#nouveauBillet a:hover
+.nouveauBillet a:hover
 {
     background-color: #28E307;
 }

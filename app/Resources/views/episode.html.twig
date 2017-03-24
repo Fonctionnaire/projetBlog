@@ -21,11 +21,9 @@
                     <h3>{{ commentaire.auteur }}</h3>
                     <p class="publie"> Envoyé le : {{ commentaire.date|date('d-m-Y') }} à {{ commentaire.date|date('H:m') }}</p>
                     <p id="textCommentaire">{{ commentaire.texte }}</p>
-                    {% if is_granted('ROLE_USER', 'ROLE_ADMIN') %}
+
                     <a href="{{ path('reponseComment', {'id': commentaire.id}) }}"><p>Répondre</p></a>
-                    {% else %}
-                        <p><a href="{{ path('fos_user_security_login') }}">Connectez-vous</a> pour répondre</p>
-                    {% endif %}
+
                     <a><p>Signler ce commentaire</p></a>
 
                     {{ commentaire.children|length }}
@@ -35,7 +33,7 @@
 
 <hr>
         </div>
-        {% if is_granted('ROLE_USER', 'ROLE_ADMIN') %}
+
         <div id="addComment">
             {{ form_start(form) }}
                 {{ form_row(form.auteur) }}
@@ -45,8 +43,6 @@
                 {{ form_row(form.envoyer) }}
             {{ form_end(form) }}
         </div>
-             {% else %}
-                 <h2 class="mustBeConnect">Vous devez être <a href="{{ path('fos_user_security_login') }}">connecté(e)</a> pour ajouter un commentaire</h2>
-        {% endif %}
+
     </div>
 {% endblock %}

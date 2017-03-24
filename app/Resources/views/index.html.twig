@@ -22,7 +22,9 @@
                     {{ episode.texte }}
                 </p>
                 <hr>
-                <a href="{{ path('episode', {'id': episode.id}) }}"><p>Commenter</p></a>
+                    <div class="nouveauBillet">
+                        <a href="{{ path('episode', {'id': episode.id}) }}">Commenter</a>
+                    </div>
                 {% endfor %}
                 {% endautoescape %}
             </article>
@@ -62,6 +64,10 @@
                         <img src="{{ asset('images/logo_twitter.png') }}" alt="lgoTwitter">
                     </a>
                 </div>
+            </div>
+            <div class="rectangle-right">
+                <h3>Vous souhaitez être informé(e) de la publication d'un nouvel épisode ?</h3>
+                <a href="{{ path('fos_user_registration_register') }}"><p>Inscrivez-vous</p></a>
             </div>
         </section>
 

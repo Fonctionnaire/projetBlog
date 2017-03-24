@@ -12,6 +12,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use FOS\UserBundle\Model\UserManagerInterface;
+
 
 class BlogController extends Controller
 {
@@ -26,7 +28,6 @@ class BlogController extends Controller
         $episode = $em->getRepository('AppBundle:Episode')->findBy(array(), array('id' => 'desc'),1,0);
         $troisEpisodes = $em->getRepository('AppBundle:Episode')->findBy(array(), array('id' => 'desc'),3,0);
         $lastComment = $em->getRepository('AppBundle:Commentaire')->findBy(array(), array('id' => 'desc'), 1,0);
-dump($lastComment);
         return $this->render('index.html.twig', array('episode' => $episode, 'troisEpisodes' => $troisEpisodes, 'lasComment' => $lastComment));
     }
 
@@ -62,6 +63,7 @@ dump($lastComment);
             $newCommentaire->setEpisode($episode);
             $em->persist($newCommentaire);
             $em->flush();
+
             return $this->redirectToRoute('episode', array('id' => $episode->getId()));
         }
 
@@ -132,6 +134,21 @@ dump($lastComment);
             $newEpisode->setDate(new \DateTime());
             $em->persist($newEpisode);
             $em->flush();
+
+            $users = $em->getRepository('AppBundle:User')->findAll();
+
+            foreach ($users as $user)
+            {
+                $message = \Swift_Message::newInstance()->setSubject('Nouvel épisode')
+                    ->setFrom('jean@gmail.com')
+                    ->setTo($user->getEmail())
+                    ->setBody($this->renderView(
+                        'Emails/newEpisodeMail.html.twig'
+                    ),
+                        'text/html'
+                    );
+                $this->get('mailer')->send($message);
+            }
 
             return $this->redirectToRoute('admin');
         }
