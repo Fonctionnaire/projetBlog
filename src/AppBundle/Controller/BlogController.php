@@ -50,11 +50,12 @@ class BlogController extends Controller
      */
     public function episodeAction(Request $request, Episode $episode)
     {
-        $listComments = $episode->getCommentaires();
-
         $newCommentaire = new Commentaire();
         $form = $this->get('form.factory')->create(CommentaireType::class, $newCommentaire);
 
+        $comments = $this->getDoctrine()->getManager()->getRepository('AppBundle:Episode')->getCommentWithResponses();
+
+        dump($comments);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
             $em = $this->getDoctrine()->getManager();
@@ -67,7 +68,7 @@ class BlogController extends Controller
             return $this->redirectToRoute('episode', array('id' => $episode->getId()));
         }
 
-        return $this->render('episode.html.twig', array('form' => $form->createView(),'episode' => $episode, 'listComments' => $listComments));
+        return $this->render('episode.html.twig', array('form' => $form->createView(),'episode' => $episode, 'comments' => $comments));
     }
 
     /**
@@ -99,6 +100,20 @@ class BlogController extends Controller
     }
 
     /**
+     * @Route("/commentaire/{id}/report", name="report")
+     * @Method({"GET", "POST"})
+     */
+    public function reportCommentAction(Commentaire $commentaire)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $commentaire->setReport(true);
+        $em->flush();
+
+        return $this->redirectToRoute('homepage');
+    }
+
+    /**
      * @Route("/a-propos", name="apropos")
      * @Method({"GET"})
      */
@@ -116,8 +131,9 @@ class BlogController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $episodes = $em->getRepository('AppBundle:Episode')->findAll();
+        $commentaires = $em->getRepository('AppBundle:Commentaire')->findAll();
 
-        return $this->render('admin.html.twig', array('episodes' => $episodes));
+        return $this->render('admin.html.twig', array('episodes' => $episodes, 'commentaires' => $commentaires));
     }
 
     /**
@@ -182,7 +198,12 @@ class BlogController extends Controller
      */
     public function moderationCommentsAction(Commentaire $commentaire)
     {
-        return $this->render('adminComments.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $commentaire->getId();
+        $em->remove($commentaire);
+        $em->flush();
+
+        return $this->redirectToRoute('admin');
     }
 
 }

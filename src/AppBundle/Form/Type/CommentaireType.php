@@ -17,8 +17,14 @@ class CommentaireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('auteur', TextType::class)
-            ->add('texte', TextareaType::class)
+            ->add('auteur', TextType::class, array(
+                'label' => false,
+                'attr' => ['placeholder' => 'Votre nom ou pseudo'],
+            ))
+            ->add('texte', TextareaType::class, array(
+                'label' => false,
+                'attr' => ['placeholder' => 'Ecrivez ici votre commentaire'],
+                ))
             ->add('envoyer', SubmitType::class)
             ;
     }

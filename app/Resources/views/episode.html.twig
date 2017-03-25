@@ -16,7 +16,9 @@
 
         <div class="commentaires">
             <h2>COMMENTAIRES</h2>
-            {% for commentaire in listComments %}
+
+            {% for commentaire in episode.commentaires %}
+
                 <div>
                     <h3>{{ commentaire.auteur }}</h3>
                     <p class="publie"> Envoyé le : {{ commentaire.date|date('d-m-Y') }} à {{ commentaire.date|date('H:m') }}</p>
@@ -24,9 +26,7 @@
 
                     <a href="{{ path('reponseComment', {'id': commentaire.id}) }}"><p>Répondre</p></a>
 
-                    <a><p>Signler ce commentaire</p></a>
-
-                    {{ commentaire.children|length }}
+                    <a href="{{ path('report', {'id': commentaire.id}) }}"><p>Signler ce commentaire</p></a>
                 </div>
 
             {% endfor %}

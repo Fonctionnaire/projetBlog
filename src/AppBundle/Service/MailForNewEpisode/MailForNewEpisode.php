@@ -2,16 +2,19 @@
 
 namespace AppBundle\Service\MailForNewEpisode;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\DependencyInjection\Container;
 
 class MailForNewEpisode extends Controller
 {
     protected $em;
+    protected $container;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em, Container $container)
     {
         $this->em = $em;
+        $this->container = $container;
     }
 
     public function sendEmailForNewEpisode()

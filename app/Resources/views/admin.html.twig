@@ -23,6 +23,25 @@
 
                 <div id="admin-moderation">
                     <h4>Liste des commentaires signalés</h4>
+                    <ol>
+                    {% for commentaire in commentaires %}
+                        {% if commentaire.report == true %}
+                            <div>
+                                <p>{{ commentaire.episode.titre }}</p>
+                                <p>Commentaire de :</p>
+                            <a href="{{ path('reponseComment', {'id': commentaire.id}) }}">
+                                <li> {{ commentaire.auteur }}</li>
+                            </a>
+
+                                <form action="{{ path('moderationComment', {'id': commentaire.id}) }}" method="post">
+                                    {# Ici j'ai écrit le bouton de soumission à la main #}
+                                    <input type="submit" value="Supprimer" class="btn btn-danger" />
+
+                                </form>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    </ol>
                 </div>
             </div>
     </div>
