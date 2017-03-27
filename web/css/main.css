@@ -197,6 +197,8 @@ footer p
     padding: 15px;
     background-color: #FCF0E8;
     margin: auto;
+    max-height: 800px;
+    overflow: auto
 }
 
 .dernierEpisode h2
@@ -254,12 +256,44 @@ footer p
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     width: 30%;
+    padding-top: 10px;
 }
 
 .commentaires h3
 {
     font-weight: bold;
     margin-bottom: 5px;
+}
+
+.reponse-report
+{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.repondre
+{
+    text-decoration: none;
+    color: black;
+    font-size: 1.2em;
+}
+
+.repondre:hover
+{
+    color: #28E307;
+}
+
+.report
+{
+    text-decoration: none;
+    color: black;
+}
+
+.report:hover
+{
+    color: red;
 }
 
 #textCommentaire
@@ -295,6 +329,35 @@ footer p
 }
 
 /* ============================ */
+
+/* ==== PAGE REPONSE A UN COMMENTAIRE ==== */
+
+.commentaires-réponse
+{
+    padding-top: 25px;
+    margin: auto;
+    width: 30%;
+
+}
+
+.commentaires-réponse div
+{
+    border-bottom: 1px solid black;
+    border-top: 1px solid black ;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.commentaires-réponse h3
+{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+
+/* ============================= */
 
 /* ==== PAGE LISTE EPISODES ==== */
 
@@ -365,6 +428,12 @@ footer p
     flex-direction: column;
     width: 15%;
     margin: auto;
+    padding-top: 25px;
+}
+
+.formLog input
+{
+    margin-bottom: 25px;
 }
 
 /* ============================ */
@@ -375,17 +444,57 @@ footer p
 {
     display: flex;
     justify-content: space-around;
-    text-align: center;
     margin-top: 25px;
+    flex-direction: column;
 
 
 }
 
-#corpAdmin div
+.titreAdmin
+{
+    text-align: center;
+}
+
+#admin-moderation
 {
     border: 1px solid black;
     border-radius: 10px;
     padding: 15px;
+    overflow: auto;
+    max-height: 400px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+
+}
+
+#admin-moderation div{
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.episode-auteur-commentaire
+{
+    flex-direction: column;
+}
+
+.boutonComment input
+{
+    margin-right: 10px;
+
+}
+#admin-updateDelete
+{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 15px;
+    max-height: 400px;
+    overflow: auto;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    text-align: center;
 }
 
 .nouveauBillet
@@ -476,3 +585,27 @@ footer p
 }
 
 /* ============================ */
+
+/* ==== PAGE ERREUR PERSO ==== */
+
+.erreur_perso
+{
+    background-color: rgba(255, 255, 255, 0.90);
+    font-family: 'Roboto', Arial, sans-serif;
+    padding: 10%;
+}
+
+.erreur_perso h1
+{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.erreur_perso hr
+{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* ============================== */

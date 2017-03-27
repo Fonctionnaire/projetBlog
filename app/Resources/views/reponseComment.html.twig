@@ -4,11 +4,14 @@
     {{ parent() }}
 
     <div class="corp">
-        <div>
+        <div class="commentaires-réponse">
+            <div>
             <h3>{{ commentaire.auteur }}</h3>
             <p class="publie">Envoyé le :{{ commentaire.date|date('d-m-Y') }} à {{ commentaire.date|date('H:m') }}</p>
             <p>{{ commentaire.texte }}</p>
         </div>
+        </div>
+        <hr>
         <div id="addComment">
             {{ form_start(form) }}
             {{ form_row(form.auteur) }}

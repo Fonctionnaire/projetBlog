@@ -41,13 +41,12 @@
                             <div class="connexHeader">
                                 {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
                                 <a href="{{ path('fos_user_security_logout') }}">
-                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }} |
                                 </a>
+
+                                <a href="{{ path('fos_user_change_password') }}"> | Changer de mot de passe</a>
                             </div>
-                        {% else %}
-                        <div class="connexHeader">
-                            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                        </div>
+
                         {% endif %}
                     </div>
                 </nav>

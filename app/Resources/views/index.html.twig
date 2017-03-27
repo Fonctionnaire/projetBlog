@@ -12,21 +12,25 @@
                 </p>
             </article>
             <hr>
-            <h2 id="titreDernierEpisode">Le dernier épisode</h2>
-            <article class="dernierEpisode">
-                {% autoescape false %}
-                {% for episode in episode %}
-                <h2>{{ episode.titre }}</h2>
-                <p class="publie">Publié le : {{ episode.date|date('d-m-Y') }} à {{ episode.date|date('H:m') }} </p>
-                <p>
-                    {{ episode.texte }}
-                </p>
-                <hr>
-                    <div class="nouveauBillet">
-                        <a href="{{ path('episode', {'id': episode.id}) }}">Commenter</a>
-                    </div>
-                {% endfor %}
-                {% endautoescape %}
+            {% if episode %}
+                <h2 id="titreDernierEpisode">Le dernier épisode</h2>
+                <article class="dernierEpisode">
+                    {% autoescape false %}
+                    {% for episode in episode %}
+                    <h2>{{ episode.titre }}</h2>
+                    <p class="publie">Publié le : {{ episode.date|date('d-m-Y') }} à {{ episode.date|date('H:m') }} </p>
+                    <p>
+                        {{ episode.texte }}
+                    </p>
+                    <hr>
+                        <div class="nouveauBillet">
+                            <a href="{{ path('episode', {'id': episode.id}) }}">Commenter</a>
+                        </div>
+                    {% endfor %}
+                    {% endautoescape %}
+                    {% else %}
+                    <h2> Pas encore d'épisode publié. Il arrivera bientôt</h2>
+                {% endif %}
             </article>
         </section>
 

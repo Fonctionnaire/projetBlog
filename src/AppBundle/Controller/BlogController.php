@@ -55,7 +55,7 @@ class BlogController extends Controller
 
         $comments = $this->getDoctrine()->getManager()->getRepository('AppBundle:Episode')->getCommentWithResponses();
 
-        dump($comments);
+dump($comments);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
             $em = $this->getDoctrine()->getManager();
@@ -204,6 +204,22 @@ class BlogController extends Controller
         $em->flush();
 
         return $this->redirectToRoute('admin');
+    }
+
+    /**
+     * @Route("/admin/dontremove/commentaire/{id}", name="moderationDontDeleteComment")
+     * @Method({"GET", "POST"})
+     */
+    public function moderationDontDeleteCommentAction(Commentaire $commentaire)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $commentaire->getId();
+        $commentaire->setReport(false);
+        $em->flush();
+
+        return $this->redirectToRoute('admin');
+
     }
 
 }

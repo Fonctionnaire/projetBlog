@@ -23,10 +23,13 @@
                     <h3>{{ commentaire.auteur }}</h3>
                     <p class="publie"> Envoyé le : {{ commentaire.date|date('d-m-Y') }} à {{ commentaire.date|date('H:m') }}</p>
                     <p id="textCommentaire">{{ commentaire.texte }}</p>
+<hr>
+                    <span class="reponse-report">
+                    <a href="{{ path('reponseComment', {'id': commentaire.id}) }}" class="repondre"><p>Répondre</p></a>
 
-                    <a href="{{ path('reponseComment', {'id': commentaire.id}) }}"><p>Répondre</p></a>
+                    <a href="{{ path('report', {'id': commentaire.id}) }}" class="report"><p>Signaler ce commentaire</p></a>
+                    </span>
 
-                    <a href="{{ path('report', {'id': commentaire.id}) }}"><p>Signler ce commentaire</p></a>
                 </div>
 
             {% endfor %}

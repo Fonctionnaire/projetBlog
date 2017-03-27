@@ -14,6 +14,21 @@ class EpisodeRepository extends \Doctrine\ORM\EntityRepository
     public function getCommentWithResponses()
     {
 
+        $qb = $this
+            ->createQueryBuilder('e')
+            ->leftJoin('e.commentaires', 'c')
+            ->addSelect('c')
+            ;
+
+        $qb->where($qb->expr()->isNull('c.parent'));
+
+        $qb->leftJoin('c.children', 'child')
+            ->addSelect('child')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult();
 
     }
 

@@ -10,8 +10,9 @@
         </div>
         <hr>
             <div id="corpAdmin">
+                <h4 class="titreAdmin">Choix d'un épisode pour le modifier ou le supprimer</h4>
                 <div id="admin-updateDelete">
-                    <h4>Choix d'un épisode pour le modifier ou le supprimer</h4>
+
                     <ol>
                     {% for episode in episodes %}
                         <a href="{{ path('updateBillet', {'id': episode.id}) }}">
@@ -20,28 +21,34 @@
                     {% endfor %}
                     </ol>
                 </div>
-
+                <h4 class="titreAdmin">Liste des commentaires signalés</h4>
                 <div id="admin-moderation">
-                    <h4>Liste des commentaires signalés</h4>
-                    <ol>
+
+
                     {% for commentaire in commentaires %}
                         {% if commentaire.report == true %}
                             <div>
+                                <div class="episode-auteur-commentaire">
                                 <p>{{ commentaire.episode.titre }}</p>
-                                <p>Commentaire de :</p>
-                            <a href="{{ path('reponseComment', {'id': commentaire.id}) }}">
-                                <li> {{ commentaire.auteur }}</li>
-                            </a>
+                                <p>Commentaire de : <a href="{{ path('reponseComment', {'id': commentaire.id}) }}">
+                                        {{ commentaire.auteur }}
+                                    </a></p>
+                                <p>{{ commentaire.texte }}</p>
+                                </div>
+                                <div class="boutonComment">
+                                    <form action="{{ path('moderationComment', {'id': commentaire.id}) }}" method="post">
+                                        <input type="submit" value="Supprimer" class="btn btn-danger" />
 
-                                <form action="{{ path('moderationComment', {'id': commentaire.id}) }}" method="post">
-                                    {# Ici j'ai écrit le bouton de soumission à la main #}
-                                    <input type="submit" value="Supprimer" class="btn btn-danger" />
+                                    </form>
+                                    <form action="{{ path('moderationDontDeleteComment', {'id': commentaire.id}) }}" method="post">
+                                        <input type="submit" value="Ne pas supprimer" class="btn btn-info" />
 
-                                </form>
+                                    </form>
+                                </div>
                             </div>
+                            <hr>
                         {% endif %}
                     {% endfor %}
-                    </ol>
                 </div>
             </div>
     </div>

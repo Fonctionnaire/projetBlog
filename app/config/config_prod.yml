@@ -19,3 +19,13 @@ monolog:
             level: debug
         console:
             type:  console
+
+swiftmailer:
+    transport: gmail
+    #host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    #auth_mode: "%mailer_auth_mode%"
+    #port:      "%port%"
+    #encryption: "%mailer_encryption%"
+#    delivery_address: me@example.com
