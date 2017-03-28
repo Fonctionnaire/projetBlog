@@ -19,7 +19,7 @@
 
             {% for commentaire in episode.commentaires %}
 
-                <div>
+                <div class="commentParent">
                     <h3>{{ commentaire.auteur }}</h3>
                     <p class="publie"> Envoyé le : {{ commentaire.date|date('d-m-Y') }} à {{ commentaire.date|date('H:m') }}</p>
                     <p id="textCommentaire">{{ commentaire.texte }}</p>
@@ -30,8 +30,44 @@
                     <a href="{{ path('report', {'id': commentaire.id}) }}" class="report"><p>Signaler ce commentaire</p></a>
                     </span>
 
-                </div>
+                    {% for comment in commentaire.children %}
+                        <div class="commentEnfant">
+                            <h3>{{ comment.auteur }}</h3>
+                            <p class="publie">Envoyé le : {{ comment.date|date('d-m-Y') }} à {{ comment.date|date('H:m') }}</p>
+                            <p>{{ comment.texte }}</p>
+                            <hr>
+                            <span class="reponse-report">
+                                <a href="{{ path('reponseComment', {'id': comment.id}) }}" class="repondre"><p>Répondre</p></a>
 
+                                <a href="{{ path('report', {'id': comment.id}) }}" class="report"><p>Signaler ce commentaire</p></a>
+                        </span>
+                        </div>
+                        {% for sousComment in comment.children %}
+                            <div class="commentEnfant-enfant">
+                                <h3>{{ sousComment.auteur }}</h3>
+                                <p class="publie">Envoyé le : {{ sousComment.date|date('d-m-Y') }} à {{ sousComment.date|date('H:m') }}</p>
+                                <p>{{ sousComment.texte }}</p>
+                                <hr>
+                                <span class="reponse-report">
+                                    <a href="{{ path('reponseComment', {'id': sousComment.id}) }}" class="repondre"><p>Répondre</p></a>
+
+                                    <a href="{{ path('report', {'id': sousComment.id}) }}" class="report"><p>Signaler ce commentaire</p></a>
+                    </span>
+                            </div>
+                            {% for deuxiemeSousComment in sousComment.children %}
+                                <div class="commentEnfant-enfant-enfant">
+                                    <h3>{{ deuxiemeSousComment.auteur }}</h3>
+                                    <p class="publie">Envoyé le : {{ deuxiemeSousComment.date|date('d-m-Y') }} à {{ sousComment.date|date('H:m') }}</p>
+                                    <p>{{ deuxiemeSousComment.texte }}</p>
+                                    <hr>
+                                    <span class="reponse-report">
+                                    <a href="{{ path('report', {'id': sousComment.id}) }}" class="report"><p>Signaler ce commentaire</p></a>
+                    </span>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
             {% endfor %}
 
 <hr>

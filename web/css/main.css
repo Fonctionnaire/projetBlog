@@ -39,6 +39,11 @@ body
     padding-top: 17px;
 }
 
+.connexHeader a
+{
+    text-decoration: none;
+}
+
 footer
 {
 
@@ -234,7 +239,7 @@ footer p
     margin-top: 25px;
 }
 
-.commentaires div
+.commentParent
 {
     margin: auto;
 }
@@ -250,13 +255,47 @@ footer p
     margin-bottom: 25px;
 }
 
-.commentaires div
+.commentParent
 {
     margin-bottom: 25px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    width: 30%;
+    width: 50%;
     padding-top: 10px;
+    padding-left: 15px;
+}
+
+.commentEnfant
+{
+    border-top: 1px solid black;
+    margin-left: 45px;
+    background-color: #E1E2E3;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-bottom: 25px;
+    padding-left: 15px;
+}
+
+.commentEnfant-enfant
+{
+    border-top: 1px solid black;
+    margin-left: 95px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #B8D4DE;
+    margin-bottom: 25px;
+    padding-left: 15px;
+}
+
+.commentEnfant-enfant-enfant
+{
+    border-top: 1px solid black;
+    margin-left: 135px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #B8DECE;
+    margin-bottom: 25px;
+    padding-left: 15px;
 }
 
 .commentaires h3

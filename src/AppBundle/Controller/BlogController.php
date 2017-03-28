@@ -55,7 +55,6 @@ class BlogController extends Controller
 
         $comments = $this->getDoctrine()->getManager()->getRepository('AppBundle:Episode')->getCommentWithResponses();
 
-dump($comments);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
             $em = $this->getDoctrine()->getManager();
