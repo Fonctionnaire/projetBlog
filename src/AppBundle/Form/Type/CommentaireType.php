@@ -8,6 +8,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class CommentaireType extends AbstractType
 {
@@ -20,11 +22,17 @@ class CommentaireType extends AbstractType
             ->add('auteur', TextType::class, array(
                 'label' => false,
                 'attr' => ['placeholder' => 'Votre nom ou pseudo'],
-            ))
+                'constraints' => array(
+                    new NotBlank(),
+                    new Length(array('min' => 2))
+            )))
             ->add('texte', TextareaType::class, array(
                 'label' => false,
                 'attr' => ['placeholder' => 'Ecrivez ici votre commentaire'],
-                ))
+                'constraints' => array(
+                    new NotBlank(),
+                    new Length(array('min' => 2))
+                )))
             ->add('envoyer', SubmitType::class)
             ;
     }

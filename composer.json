@@ -2,6 +2,7 @@
     "name": "thiba/blog",
     "license": "proprietary",
     "type": "project",
+    "description": "The \"Symfony Standard Edition\" distribution",
     "autoload": {
         "psr-4": {
             "": "src/"
@@ -29,7 +30,8 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "twig/twig": "^1.0||^2.0",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "symfony/templating": "3.2.6"
 
     },
     "require-dev": {

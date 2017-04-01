@@ -4,7 +4,7 @@
     {{ parent() }}
     <div class="corp">
     <div class="corpSection1">
-        <section id="sectionDescription" class="col-md-12">
+        <section class="sectionDescription" class="col-md-12">
             <article>
                 <h1>BILLET SIMPLE POUR L'ALASKA - LIVRE EPISODIQUE</h1>
                 <p>
@@ -17,7 +17,7 @@
                 <article class="dernierEpisode">
                     {% autoescape false %}
                     {% for episode in episode %}
-                    <h2>{{ episode.titre }}</h2>
+                    <a href="{{ path('episode', {'id': episode.id}) }}"><h2>{{ episode.titre }}</h2></a>
                     <p class="publie">Publié le : {{ episode.date|date('d-m-Y') }} à {{ episode.date|date('H:m') }} </p>
                     <p>
                         {{ episode.texte }}
@@ -34,9 +34,9 @@
             </article>
         </section>
 
-        <section class="col-md-3">
+        <section class="sectiondroite">
             <div class="rectangle-right">
-                <img src="{{ asset('images/businessman-310819_1280.png') }}" name="auteur" alt="auteur" id="photoAuteur">
+                <img src="{{ asset('images/businessman-310819_1280.png') }}" name="auteur" alt="auteur" class="photoAuteur">
                 <hr>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas accumsan sapien suscipit, vestibulum nunc eu, euismod est. Sed luctus ipsum mauris, eget sodales sem porta nec...

@@ -1,0 +1,27 @@
+{% for comment in comments %}
+    <li>
+        <div class="commentParent">
+            <h3>{{ comment.auteur }}</h3>
+            {% if comment.parent %}
+            <p class="enReponse">En réponse à : {{ comment.parent.auteur }}</p>
+            {% endif %}
+            <p class="publie"> Envoyé le : {{ comment.date|date('d-m-Y') }} à {{ comment.date|date('H:m') }}</p>
+            <p id="textCommentaire">{{ comment.texte }}</p>
+            <hr>
+            <span class="reponse-report">
+
+                {% if level < 3 %}
+                    <a href="{{ path('reponseComment', {'id': comment.id}) }}" class="repondre"><p>Répondre</p></a>
+                {% endif %}
+                    <a href="{{ path('report', {'id': comment.id}) }}" class="report"><p>Signaler ce commentaire</p></a>
+                    </span>
+        {% if comment.children %}
+            <div class="commentEnfant">
+                <ul>
+                    {% include "/sousComment.html.twig" with {'comments': comment.children, 'level': level + 1} %}
+                </ul>
+            </div>
+        {% endif %}
+        </div>
+    </li>
+{% endfor %}

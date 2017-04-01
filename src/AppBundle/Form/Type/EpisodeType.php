@@ -8,6 +8,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class EpisodeType extends AbstractType
 {
@@ -17,8 +19,16 @@ class EpisodeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre', TextType::class)
-            ->add('texte', TextareaType::class, array('required' => false))
+            ->add('titre', TextType::class, array(
+                'constraints' => array(
+                    new NotBlank(),
+                    new Length(array('min' => 2)
+            ))))
+            ->add('texte', TextareaType::class, array('required' => false,
+                'constraints' => array(
+                    new NotBlank(),
+                    new Length(array('min' => 2)
+                ))))
             ->add('valider', SubmitType::class)
         ;
     }

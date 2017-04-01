@@ -11,24 +11,22 @@ namespace AppBundle\Repository;
 class EpisodeRepository extends \Doctrine\ORM\EntityRepository
 {
 
-    public function getCommentWithResponses()
+    public function getEpisodeWithFirstComments($id)
     {
 
         $qb = $this
             ->createQueryBuilder('e')
+            ->addSelect('c', 'child')
             ->leftJoin('e.commentaires', 'c')
-            ->addSelect('c')
+            ->leftJoin('c.children', 'child')
+            ->where('c.parent IS NULL')
+            ->andWhere('e.id = :id')
+            ->setParameter('id', $id)
             ;
-
-        $qb->where($qb->expr()->isNull('c.parent'));
-
-        $qb->leftJoin('c.children', 'child')
-            ->addSelect('child')
-        ;
 
         return $qb
             ->getQuery()
-            ->getResult();
+            ->getSingleResult();
 
     }
 

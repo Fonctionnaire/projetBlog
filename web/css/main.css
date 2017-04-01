@@ -3,7 +3,8 @@
 body
 {
     background-image: url(../images/sunrise-2062953_1920.jpg);
-    background-color: white;
+    background-repeat: no-repeat;
+    background-color: #124070;
 }
 
 .container
@@ -14,22 +15,22 @@ body
     padding-bottom: 15px;
 }
 
-#titreSite
+.titreSite
 {
     font-size: 1.4em;
     font-weight: bold;
-    color: black;
+    color: black !important;
     font-family: 'Pacifico', cursive, Arial;
 }
 
-#headerNavigation
+.headerNavigation
 {
     display: flex;
     justify-content: space-around;
 
 }
 
-#headerNavigation li:hover
+.headerNavigation li:hover
 {
     background-color: #058DFC;
 }
@@ -97,7 +98,7 @@ footer p
     width: 100%;
 }
 
-#sectionDescription
+.sectionDescription
 {
     margin-top: 25px;
     margin-left: 15px;
@@ -105,13 +106,13 @@ footer p
     border-right: 4px solid grey;
 }
 
-#sectionDescription hr
+.sectionDescription hr
 {
     width: 70%;
     border-color: black;
 }
 
-#sectionDescription h1
+.sectionDescription h1
 {
     font-weight: bold;
     margin-bottom: 15px;
@@ -119,9 +120,15 @@ footer p
 
 }
 
-#sectionDescription p
+.sectionDescription p
 {
     text-align: justify;
+    padding-right: 15px;
+}
+
+.sectiondroite
+{
+    min-width: 20%;
 }
 
 .rectangle-right
@@ -173,7 +180,7 @@ footer p
     text-align: center;
 }
 
-#photoAuteur
+.photoAuteur
 {
     width: 100px;
     height: 100px;
@@ -258,46 +265,24 @@ footer p
 .commentParent
 {
     margin-bottom: 25px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    width: 50%;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 80%;
     padding-top: 10px;
     padding-left: 15px;
+    background-color: #9AB8D9;
 }
 
-.commentEnfant
+.commentEnfant div
 {
-    border-top: 1px solid black;
-    margin-left: 45px;
-    background-color: #E1E2E3;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    margin-bottom: 25px;
-    padding-left: 15px;
+    background-color: #DCE1E3;
 }
 
-.commentEnfant-enfant
+.enReponse
 {
-    border-top: 1px solid black;
-    margin-left: 95px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: #B8D4DE;
-    margin-bottom: 25px;
-    padding-left: 15px;
+    font-style: italic;
+    font-size: 0.9em;
 }
-
-.commentEnfant-enfant-enfant
-{
-    border-top: 1px solid black;
-    margin-left: 135px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: #B8DECE;
-    margin-bottom: 25px;
-    padding-left: 15px;
-}
-
 .commentaires h3
 {
     font-weight: bold;
@@ -340,12 +325,12 @@ footer p
 
 }
 
-#addComment
+.addComment
 {
     text-align: center;
 }
 
-#addComment textarea
+.addComment textarea
 {
     width: 40%;
     height: 270px;
@@ -648,3 +633,108 @@ footer p
 }
 
 /* ============================== */
+
+/* ===== RESPONSIVE ==== */
+@media screen and (max-width: 1030px) {
+
+    .titreSite
+    {
+        font-size: 1.1em;
+
+    }
+
+    .headerNavigation
+    {
+        display: inherit;
+    }
+
+    .navbar-brand
+    {
+        color: black !important;
+    }
+
+    .navbar-header
+    {
+        display: inherit;
+    }
+
+    .connexHeader
+    {
+        font-size: 0.8em;
+        max-width: 100%;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+
+
+    /* ==== INDEX ==== */
+    .corpSection1
+    {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .photoAuteur
+    {
+        justify-content: center;
+        margin-left: 40%;
+
+    }
+
+    .col-md-3
+    {
+        margin: auto;
+    }
+
+    .dernierEpisode
+    {
+        min-width: 100%;
+    }
+
+    .sectionDescription
+    {
+        border: none;
+    }
+
+    .rectangle-right
+    {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    /* ============================ */
+
+    /* ==== EPISODE UNIQUE ==== */
+
+    .reponse-report
+    {
+        display: inherit;
+    }
+
+    .reponse-report a
+    {
+        padding: 5px;
+        font-size: 0.85em;
+    }
+
+    .addComment textarea
+    {
+        width: 90%;
+    }
+
+    /* =========================== */
+
+    /* ==== CONNEXION ADMIN ==== */
+
+    .formLog input
+    {
+        width: 300%;
+    }
+    .formLog label
+    {
+        min-width: 300%;
+    }
+
+    /* ============================ */
+}
