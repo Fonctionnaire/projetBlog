@@ -5,7 +5,7 @@
             {% if comment.parent %}
             <p class="enReponse">En réponse à : {{ comment.parent.auteur }}</p>
             {% endif %}
-            <p class="publie"> Envoyé le : {{ comment.date|date('d-m-Y') }} à {{ comment.date|date('H:m') }}</p>
+            <p class="publie"> Envoyé le : {{ comment.date|date('d-m-Y') }} à {{ comment.date|date('H:i') }}</p>
             <p id="textCommentaire">{{ comment.texte }}</p>
             <hr>
             <span class="reponse-report">

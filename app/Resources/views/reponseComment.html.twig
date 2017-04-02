@@ -7,7 +7,7 @@
         <div class="commentaires-réponse">
             <div>
             <h3>{{ commentaire.auteur }}</h3>
-            <p class="publie">Envoyé le :{{ commentaire.date|date('d-m-Y') }} à {{ commentaire.date|date('H:m') }}</p>
+            <p class="publie">Envoyé le :{{ commentaire.date|date('d-m-Y') }} à {{ commentaire.date|date('H:i') }}</p>
             <p>{{ commentaire.texte }}</p>
         </div>
         </div>

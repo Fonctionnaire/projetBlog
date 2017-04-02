@@ -8,7 +8,7 @@
             <div class="dernierEpisode">
                 {% autoescape false %}
                     <h2>{{ episode.titre }}</h2>
-                    <p class="publie">Publié le {{ episode.date|date('d-m-Y') }} à {{ episode.date|date('H:m') }}</p>
+                    <p class="publie">Publié le {{ episode.date|date('d-m-Y') }} à {{ episode.date|date('H:i') }}</p>
                     <p>{{ episode.texte }}</p>
                 {% endautoescape %}
             </div>
