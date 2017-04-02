@@ -52,7 +52,6 @@ class BlogController extends Controller
         $episode = $this->getDoctrine()->getManager()->getRepository('AppBundle:Episode')
             ->getEpisodeWithFirstComments($episode->getId());
 
-        dump($episode);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
             $em = $this->getDoctrine()->getManager();
@@ -70,7 +69,7 @@ class BlogController extends Controller
      * @Route("/commentaire/{id}", name="reponseComment")
      * @Method({"GET", "POST"})
      */
-    public function reponseCommentAction(Request $request,Commentaire $commentaire, Episode $episode)
+    public function reponseCommentAction(Request $request,Commentaire $commentaire)
     {
         $newCommentaire = new Commentaire();
         $form = $this->get('form.factory')->create(CommentaireType::class, $newCommentaire);

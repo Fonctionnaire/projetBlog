@@ -43,7 +43,7 @@ class Commentaire
     private $texte;
 
     /**
-     * @ORM\OneToMany(targetEntity="Commentaire", mappedBy="parent")
+     * @ORM\OneToMany(targetEntity="Commentaire", mappedBy="parent", cascade={"remove"})
      */
     private $children;
 

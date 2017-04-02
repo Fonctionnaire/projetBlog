@@ -100,7 +100,8 @@ class AdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $commentaire->getId();
-        $em->remove($commentaire);
+        $commentaire->setTexte('Ce commentaire a été supprimé par le modérateur');
+        $commentaire->setReport(false);
         $em->flush();
 
         return $this->redirectToRoute('admin');
