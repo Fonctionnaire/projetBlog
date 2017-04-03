@@ -15,7 +15,7 @@ class AdminController extends Controller
 {
     /**
      * @Route("/admin", name="admin")
-     * @Method({"GET", "POST"})
+     * @Method({"GET"})
      * @Security("has_role('ROLE_ADMIN')")
      */
     public function adminAction()
