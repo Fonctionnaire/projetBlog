@@ -5,7 +5,7 @@
 
     <div class="corp">
         {{ form_start(form) }}
-    {% autoescape false %}
+
             <div id="tinyTitre">
                 {{ form_row(form.titre) }}
                 {{ form_errors(form.titre) }}
@@ -18,6 +18,6 @@
                 {{ form_row(form.valider, {'attr': {'class': 'tinyValider'}}) }}
             </div>
         {{ form_end(form) }}
-        {% endautoescape %}
+
     </div>
 {% endblock %}
