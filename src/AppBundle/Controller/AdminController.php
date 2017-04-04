@@ -38,23 +38,12 @@ class AdminController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
             $em = $this->getDoctrine()->getManager();
-            $newEpisode->setDate(new \DateTime());
+
             $em->persist($newEpisode);
             $em->flush();
 
-            $users = $em->getRepository('AppBundle:User')->findAll();
-            foreach ($users as $user)
-            {
-                $message = \Swift_Message::newInstance()->setSubject('Nouvel épisode')
-                    ->setFrom('jean@gmail.com')
-                    ->setTo($user->getEmail())
-                    ->setBody($this->renderView(
-                        'Emails/newEpisodeMail.html.twig', array('user' => $user)
-                    ),
-                        'text/html'
-                    );
-                $this->get('mailer')->send($message);
-            }
+            $this->get('app.emails_for_new_episode')->sendMailForNewEpisode();
+
             return $this->redirectToRoute('admin');
         }
         return $this->render('adminAddBillet.html.twig', array('form' => $form->createView()));
@@ -67,8 +56,8 @@ class AdminController extends Controller
     public function adminUpdateBilletAction(Request $request, Episode $episode)
     {
 
-        $newEpisode = $episode;
-        $form = $this->get('form.factory')->create(EpisodeType::class, $newEpisode);
+
+        $form = $this->get('form.factory')->create(EpisodeType::class, $episode);
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
             $em = $this->getDoctrine()->getManager();
@@ -76,12 +65,12 @@ class AdminController extends Controller
 
             return $this->redirectToRoute('admin');
         }
-        return $this->render('adminUpdate.html.twig', array('form' => $form->createView(),'id' => $episode->getId(), 'episode' => $newEpisode));
+        return $this->render('adminUpdate.html.twig', array('form' => $form->createView(), 'episode' => $episode));
     }
 
     /**
      * @Route("/admin/delete/{id}", name="deleteBillet")
-     * @Method({"GET", "POST"})
+     * @Method({"POST"})
      */
     public function adminDeleteBilletAction(Episode $episode)
     {
@@ -94,7 +83,7 @@ class AdminController extends Controller
 
     /**
      * @Route("/admin/commentaire/{id}", name="moderationComment")
-     * @Method({"GET", "POST"})
+     * @Method({"POST"})
      */
     public function moderationCommentsAction(Commentaire $commentaire)
     {
@@ -109,7 +98,7 @@ class AdminController extends Controller
 
     /**
      * @Route("/admin/dontremove/commentaire/{id}", name="moderationDontDeleteComment")
-     * @Method({"GET", "POST"})
+     * @Method({"POST"})
      */
     public function moderationDontDeleteCommentAction(Commentaire $commentaire)
     {

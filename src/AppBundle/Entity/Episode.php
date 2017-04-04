@@ -48,6 +48,15 @@ class Episode
      */
     private $commentaires;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->commentaires = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->date = new \DateTime();
+    }
+
 
     /**
      * Get id
@@ -129,13 +138,6 @@ class Episode
     public function getTexte()
     {
         return $this->texte;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->commentaires = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

@@ -55,7 +55,6 @@ class BlogController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
             $em = $this->getDoctrine()->getManager();
-            $newCommentaire->setDate(new \DateTime());
             $newCommentaire->setEpisode($episode);
             $em->persist($newCommentaire);
             $em->flush();
@@ -77,8 +76,6 @@ class BlogController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
             $em = $this->getDoctrine()->getManager();
-
-            $newCommentaire->setDate(new \DateTime());
 
             $idEpisode = $commentaire->getEpisode();
             $newCommentaire->setEpisode($idEpisode);

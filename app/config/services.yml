@@ -9,3 +9,10 @@ services:
         class: AppBundle\Form\Type\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
+
+    app.emails_for_new_episode:
+        class: AppBundle\Services\EmailsForNewEpisode\EmailsForNewEpisode
+        arguments:
+            - "@mailer"
+            - "@twig"
+            - "@doctrine.orm.entity_manager"
