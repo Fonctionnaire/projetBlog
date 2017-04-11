@@ -23,8 +23,8 @@ class BlogController extends Controller
         $em = $this->getDoctrine()->getManager();
         $episode = $em->getRepository('AppBundle:Episode')->findBy(array(), array('id' => 'desc'),1,0);
         $troisEpisodes = $em->getRepository('AppBundle:Episode')->findBy(array(), array('id' => 'desc'),3,0);
-        $lastComment = $em->getRepository('AppBundle:Commentaire')->findBy(array(), array('id' => 'desc'), 1,0);
-        return $this->render('index.html.twig', array('episode' => $episode, 'troisEpisodes' => $troisEpisodes, 'lasComment' => $lastComment));
+
+        return $this->render('index.html.twig', array('episode' => $episode, 'troisEpisodes' => $troisEpisodes));
     }
 
     /**
